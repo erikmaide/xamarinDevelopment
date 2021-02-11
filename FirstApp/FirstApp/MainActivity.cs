@@ -20,6 +20,7 @@ namespace FirstApp
             var textView = FindViewById<TextView>(Resource.Id.textView1);
             var counterView = FindViewById<TextView>(Resource.Id.textView2);
             var button = FindViewById<Button>(Resource.Id.button1);
+            var webButton = FindViewById<Button>(Resource.Id.toWebActivity);
             int counter = 0;
             var toCalculatorButton = FindViewById<Button>(Resource.Id.toCalculator);
 
@@ -36,7 +37,12 @@ namespace FirstApp
                 Intent intent = new Intent(this, typeof(CalculatorActivity));
                 StartActivity(intent);
             };
-
+            webButton.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(WebActivity));
+                intent.PutExtra("address", "https://www.neti.ee");
+                StartActivity(intent);
+            };
 
 
         }
