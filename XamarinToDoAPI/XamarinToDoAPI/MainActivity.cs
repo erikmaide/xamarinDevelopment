@@ -20,15 +20,15 @@ namespace XamarinToDoAPI
         public static string user;
         public static string password;
         Button btn_get_data;
-        TextView txt_user, txt_password;
+        EditText txt_user, txt_password;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             myAPI = RestService.For<IMyAPI>("https://demo2.z-bit.ee");
             btn_get_data = FindViewById<Button>(Resource.Id.btn_get_data);
-            txt_user = FindViewById<TextView>(Resource.Id.txt_user);
-            txt_password = FindViewById<TextView>(Resource.Id.txt_password);
+            txt_user = FindViewById<EditText>(Resource.Id.txt_user);
+            txt_password = FindViewById<EditText>(Resource.Id.txt_password);
 
             btn_get_data.Click += async delegate
              {
