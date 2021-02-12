@@ -68,6 +68,7 @@
     <Compile Include="Model\PostContent.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubmitPostActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -117,6 +118,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\get_user_tasks_layout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\submit_post_layout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

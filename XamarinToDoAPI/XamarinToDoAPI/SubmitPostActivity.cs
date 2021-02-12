@@ -15,31 +15,26 @@ using XamarinToDoAPI.Model;
 
 namespace XamarinToDoAPI
 {
-    [Activity(Label = "GetUserTasksActivity")]
-    public class GetUserTasksActivity : Activity
+    [Activity(Label = "SubmitPostActivity")]
+    public class SubmitPostActivity : Activity
     {
         IMyAPI myAPI;
         string access_token = MainActivity.access_token;
         string ticketToken = "Bearer ";
-        Button getTasks, goToSubmitPost;
-        ListView userTasks;
+        Button submitPost;
+        EditText desc, title;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.get_user_tasks_layout);
+            SetContentView(Resource.Layout.submit_post_layout);
 
             myAPI = RestService.For<IMyAPI>("https://demo2.z-bit.ee");
-            getTasks = FindViewById<Button>(Resource.Id.btn_get_tasks);
-            userTasks = FindViewById<ListView>(Resource.Id.my_task);
-            goToSubmitPost = FindViewById<Button>(Resource.Id.btn_go_to_submit_post);
+            submitPost = FindViewById<Button>(Resource.Id.btn_submit_post);
+            desc = FindViewById<EditText>(Resource.Id.txt_description);
+            title = FindViewById<EditText>(Resource.Id.txt_title);
 
-            goToSubmitPost.Click += delegate
-            {
-                Intent intent = new Intent(this, typeof(SubmitPostActivity));
-                StartActivity(intent);
-            };
 
-                getTasks.Click += async delegate
+            submitPost.Click += async delegate
             {
                 try
                 {
@@ -51,16 +46,15 @@ namespace XamarinToDoAPI
                     if (!dialog.IsShowing)
                         dialog.Show();
 
-                    PostContent get = new PostContent();
+                    PostContent post = new PostContent();
+                    post.desc = desc.Text;
+                    post.title = title.Text;
                     ticketToken += access_token;
-                    List<PostContent> tasks = await myAPI.GetTasks(ticketToken);
-                    List<string> task_title = new List<string>();
+                    PostContent result = await myAPI.SubmitTask(ticketToken, post);
+                    Intent intent = new Intent(this, typeof(GetUserTasksActivity));
+                    StartActivity(intent);
 
-                    foreach (var task in tasks)
-                    task_title.Add(task.title);
-                    var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, task_title);
-                    userTasks.Adapter = adapter;
-                    
+
                     if (dialog.IsShowing)
                         dialog.Dismiss();
                 }

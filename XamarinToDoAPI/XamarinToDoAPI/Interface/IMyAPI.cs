@@ -18,9 +18,12 @@ namespace XamarinToDoAPI.Interface
     public interface IMyAPI
     {
         [Post("/users/get-token")]
-        Task<PostContent> SubmitPost([Body] PostContent post);
+        Task<PostContent> Login([Body] PostContent post);
 
         [Get("/tasks")]
         Task<List<PostContent>> GetTasks([Header("Authorization")] string authorization);
+
+        [Post("/tasks")]
+        Task<PostContent> SubmitTask([Header("Authorization")] string authorization, [Body] PostContent post);
     }
 }

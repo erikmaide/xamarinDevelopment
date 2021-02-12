@@ -19,18 +19,18 @@ namespace XamarinToDoAPI
         public static string access_token;
         public static string user;
         public static string password;
-        Button btn_get_data;
+        Button login;
         EditText txt_user, txt_password;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             myAPI = RestService.For<IMyAPI>("https://demo2.z-bit.ee");
-            btn_get_data = FindViewById<Button>(Resource.Id.btn_get_data);
+            login = FindViewById<Button>(Resource.Id.btn_get_data);
             txt_user = FindViewById<EditText>(Resource.Id.txt_user);
             txt_password = FindViewById<EditText>(Resource.Id.txt_password);
 
-            btn_get_data.Click += async delegate
+            login.Click += async delegate
              {
                  try
                  {
@@ -44,7 +44,7 @@ namespace XamarinToDoAPI
                      PostContent post = new PostContent();
                      post.username = txt_user.Text;              
                      post.password = txt_password.Text;
-                     PostContent result = await myAPI.SubmitPost(post);
+                     PostContent result = await myAPI.Login(post);
                      access_token = result.access_token;
                      if (dialog.IsShowing)
                          dialog.Dismiss();
