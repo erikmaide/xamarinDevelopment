@@ -23,6 +23,11 @@
                 <Button
             android:id="@+id/btn_submit_post"
             android:text="Submit task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+                    <Button
+            android:id="@+id/btn_go_back"
+            android:text="Go back"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

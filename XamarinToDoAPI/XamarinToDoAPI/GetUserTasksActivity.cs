@@ -18,17 +18,21 @@ namespace XamarinToDoAPI
     [Activity(Label = "GetUserTasksActivity")]
     public class GetUserTasksActivity : Activity
     {
+
         IMyAPI myAPI;
-        string access_token = MainActivity.access_token;
-        string ticketToken = "Bearer ";
+        string bearerToken;
         Button getTasks, goToSubmitPost;
         ListView userTasks;
+        public override void OnBackPressed()
+        {
+            return;
+        }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.get_user_tasks_layout);
 
-            myAPI = RestService.For<IMyAPI>("https://demo2.z-bit.ee");
+            myAPI = RestService.For<IMyAPI>(Constants.ApiUrl);
             getTasks = FindViewById<Button>(Resource.Id.btn_get_tasks);
             userTasks = FindViewById<ListView>(Resource.Id.my_task);
             goToSubmitPost = FindViewById<Button>(Resource.Id.btn_go_to_submit_post);
@@ -47,13 +51,14 @@ namespace XamarinToDoAPI
                     .SetContext(this)
                     .SetMessage("Please wait ...")
                     .Build();
-
+                  
+                    getTasks.Visibility = ViewStates.Gone;
                     if (!dialog.IsShowing)
                         dialog.Show();
 
                     PostContent get = new PostContent();
-                    ticketToken += access_token;
-                    List<PostContent> tasks = await myAPI.GetTasks(ticketToken);
+                    bearerToken = Constants.BearerString + MainActivity.access_token;
+                    List<PostContent> tasks = await myAPI.GetTasks(bearerToken);
                     List<string> task_title = new List<string>();
 
                     foreach (var task in tasks)

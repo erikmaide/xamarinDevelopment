@@ -25,7 +25,7 @@ namespace XamarinToDoAPI
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
-            myAPI = RestService.For<IMyAPI>("https://demo2.z-bit.ee");
+            myAPI = RestService.For<IMyAPI>(Constants.ApiUrl);
             login = FindViewById<Button>(Resource.Id.btn_get_data);
             txt_user = FindViewById<EditText>(Resource.Id.txt_user);
             txt_password = FindViewById<EditText>(Resource.Id.txt_password);
@@ -53,7 +53,7 @@ namespace XamarinToDoAPI
                  }
                  catch (Exception ex)
                  {
-                     Toast.MakeText(this, "" + ex.Message, ToastLength.Short).Show();
+                     Toast.MakeText(this, "Wrong password" + ex, ToastLength.Short).Show();
                  }
              };
 

@@ -19,20 +19,29 @@ namespace XamarinToDoAPI
     public class SubmitPostActivity : Activity
     {
         IMyAPI myAPI;
-        string access_token = MainActivity.access_token;
-        string ticketToken = "Bearer ";
-        Button submitPost;
+        string bearerToken;
+        Button submitPost, goBack;
         EditText desc, title;
+        public override void OnBackPressed()
+        {
+            return;
+        }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.submit_post_layout);
 
-            myAPI = RestService.For<IMyAPI>("https://demo2.z-bit.ee");
+            myAPI = RestService.For<IMyAPI>(Constants.ApiUrl);
             submitPost = FindViewById<Button>(Resource.Id.btn_submit_post);
+            goBack = FindViewById<Button>(Resource.Id.btn_go_back);
             desc = FindViewById<EditText>(Resource.Id.txt_description);
             title = FindViewById<EditText>(Resource.Id.txt_title);
 
+            goBack.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(GetUserTasksActivity));
+                StartActivity(intent);
+            };
 
             submitPost.Click += async delegate
             {
@@ -49,8 +58,8 @@ namespace XamarinToDoAPI
                     PostContent post = new PostContent();
                     post.desc = desc.Text;
                     post.title = title.Text;
-                    ticketToken += access_token;
-                    PostContent result = await myAPI.SubmitTask(ticketToken, post);
+                    bearerToken = Constants.BearerString + MainActivity.access_token;
+                    PostContent result = await myAPI.SubmitTask(bearerToken, post);
                     Intent intent = new Intent(this, typeof(GetUserTasksActivity));
                     StartActivity(intent);
 
