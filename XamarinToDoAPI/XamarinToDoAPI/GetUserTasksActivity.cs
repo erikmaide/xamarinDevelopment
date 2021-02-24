@@ -20,7 +20,7 @@ namespace XamarinToDoAPI
     {
 
         IMyAPI myAPI;
-        string bearerToken;
+        string bearerToken = Constants.BearerString + MainActivity.access_token;
         Button getTasks, goToSubmitPost;
         ListView userTasks;
         public override void OnBackPressed()
@@ -56,8 +56,7 @@ namespace XamarinToDoAPI
                     if (!dialog.IsShowing)
                         dialog.Show();
 
-                    PostContent get = new PostContent();
-                    bearerToken = Constants.BearerString + MainActivity.access_token;
+                    PostContent get = new PostContent(); 
                     List<PostContent> tasks = await myAPI.GetTasks(bearerToken);
                     List<string> task_title = new List<string>();
 

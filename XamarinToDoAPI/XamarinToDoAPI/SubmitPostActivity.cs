@@ -19,7 +19,7 @@ namespace XamarinToDoAPI
     public class SubmitPostActivity : Activity
     {
         IMyAPI myAPI;
-        string bearerToken;
+        string bearerToken = Constants.BearerString + MainActivity.access_token;
         Button submitPost, goBack;
         EditText desc, title;
         public override void OnBackPressed()
@@ -58,7 +58,6 @@ namespace XamarinToDoAPI
                     PostContent post = new PostContent();
                     post.desc = desc.Text;
                     post.title = title.Text;
-                    bearerToken = Constants.BearerString + MainActivity.access_token;
                     PostContent result = await myAPI.SubmitTask(bearerToken, post);
                     Intent intent = new Intent(this, typeof(GetUserTasksActivity));
                     StartActivity(intent);
