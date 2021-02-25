@@ -3814,19 +3814,22 @@ namespace FirstApp
 			public const int useLogo = 2131230918;
 			
 			// aapt resource value: 0x7F0800C7
-			public const int view_offset_helper = 2131230919;
+			public const int vibrate_btn = 2131230919;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int visible = 2131230920;
+			public const int view_offset_helper = 2131230920;
 			
 			// aapt resource value: 0x7F0800C9
-			public const int webView1 = 2131230921;
+			public const int visible = 2131230921;
 			
 			// aapt resource value: 0x7F0800CA
-			public const int withText = 2131230922;
+			public const int webView1 = 2131230922;
 			
 			// aapt resource value: 0x7F0800CB
-			public const int wrap_content = 2131230923;
+			public const int withText = 2131230923;
+			
+			// aapt resource value: 0x7F0800CC
+			public const int wrap_content = 2131230924;
 			
 			static Id()
 			{

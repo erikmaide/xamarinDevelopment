@@ -5,12 +5,15 @@ using Android.Runtime;
 using Android.Widget;
 using Android.Content;
 using Xamarin.Essentials;
+using System;
+using System.Threading.Tasks;
 
 namespace FirstApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -21,9 +24,20 @@ namespace FirstApp
             var textView = FindViewById<TextView>(Resource.Id.textView1);
             var counterView = FindViewById<TextView>(Resource.Id.textView2);
             var button = FindViewById<Button>(Resource.Id.button1);
+            var vibrationControl = FindViewById<Button>(Resource.Id.vibrate_btn);
             var webButton = FindViewById<Button>(Resource.Id.toWebActivity);
             int counter = 0;
             var toCalculatorButton = FindViewById<Button>(Resource.Id.toCalculator);
+
+
+
+            vibrationControl.Click += delegate
+            {
+                Vibration.Vibrate(5000);
+            };
+
+
+          
 
             button.Click += async delegate
             {
@@ -55,6 +69,8 @@ namespace FirstApp
 
 
         }
+
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
