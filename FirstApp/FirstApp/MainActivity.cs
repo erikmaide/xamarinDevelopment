@@ -4,6 +4,7 @@ using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
 using Android.Content;
+using Xamarin.Essentials;
 
 namespace FirstApp
 {
@@ -24,12 +25,20 @@ namespace FirstApp
             int counter = 0;
             var toCalculatorButton = FindViewById<Button>(Resource.Id.toCalculator);
 
-            button.Click += delegate
+            button.Click += async delegate
             {
                 textView.Text = "Hello Xamarian";
+
                 counter += 1;
+
                 counterView.Text = counter.ToString();
-                
+
+                if (counter % 2 == 0)
+                {
+                    await Flashlight.TurnOnAsync();
+                }
+                else
+                    await Flashlight.TurnOffAsync();
             };
 
             toCalculatorButton.Click += delegate
