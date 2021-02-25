@@ -9,6 +9,7 @@ using Refit;
 using EDMTDialog;
 using XamarinToDoAPI.Model;
 using Android.Content;
+using Xamarin.Essentials;
 
 namespace XamarinToDoAPI
 {
@@ -21,6 +22,15 @@ namespace XamarinToDoAPI
         public static string password;
         Button login;
         EditText txt_user, txt_password;
+       private void Accelerometer_ShakeDetected(object sender, EventArgs e)
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                txt_user.Text = string.Empty;
+                txt_password.Text = string.Empty;
+            });
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,6 +39,8 @@ namespace XamarinToDoAPI
             login = FindViewById<Button>(Resource.Id.btn_get_data);
             txt_user = FindViewById<EditText>(Resource.Id.txt_user);
             txt_password = FindViewById<EditText>(Resource.Id.txt_password);
+            Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+            Accelerometer.Start(SensorSpeed.Game);
 
             login.Click += async delegate
              {
