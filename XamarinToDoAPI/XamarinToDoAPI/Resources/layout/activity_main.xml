@@ -13,7 +13,7 @@
         android:orientation="vertical">
         <EditText
             android:id="@+id/txt_user"
-            android:hint="Username"
+            android:hint="@string/user_name"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             />
         <EditText
             android:id="@+id/txt_password"
-            android:hint="Password"
+            android:hint="@string/password"
             android:password="true" 
             android:textSize="24sp"
             android:textStyle="normal"
@@ -31,7 +31,7 @@
         
         <Button
             android:id="@+id/btn_get_data"
-            android:text="Login"
+            android:text="@string/login"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

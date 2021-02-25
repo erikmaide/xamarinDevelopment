@@ -6,14 +6,14 @@
 
         <Button
             android:id="@+id/btn_get_tasks"
-            android:text="Get user posts"
+            android:text="@string/get_tasks"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
             <Button
             android:id="@+id/btn_go_to_submit_post"
-            android:text="Submit task"
+            android:text="@string/submit_task"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
