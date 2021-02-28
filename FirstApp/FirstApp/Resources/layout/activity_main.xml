@@ -35,6 +35,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/toWebActivity" />
+            <Button
+        android:text="To List Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toListButton" />
     <Button
         android:text="Press to vibrate"
         android:layout_width="match_parent"

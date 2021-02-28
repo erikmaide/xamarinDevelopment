@@ -28,7 +28,7 @@ namespace FirstApp
             var webButton = FindViewById<Button>(Resource.Id.toWebActivity);
             int counter = 0;
             var toCalculatorButton = FindViewById<Button>(Resource.Id.toCalculator);
-
+            var toListButton = FindViewById<Button>(Resource.Id.toListButton);
 
 
             vibrationControl.Click += delegate
@@ -37,7 +37,11 @@ namespace FirstApp
             };
 
 
-          
+            toListButton.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(SampleListActivity));
+                StartActivity(intent);
+            };
 
             button.Click += async delegate
             {
