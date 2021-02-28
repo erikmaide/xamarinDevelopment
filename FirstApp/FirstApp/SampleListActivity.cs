@@ -49,8 +49,16 @@ namespace FirstApp
 
             listView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args)
             {
+                int manufacturerLogo = items[args.Position].Image;
+                string exportImage = Convert.ToString(manufacturerLogo);
                 var car = items[args.Position].Manufacturer;
                 Toast.MakeText(this, car, ToastLength.Long).Show();
+                Intent intent = new Intent(this, typeof(CarSpecActivity));
+                
+                intent.PutExtra("carImage", exportImage);
+                StartActivity(intent);
+
+
             };
         }
     }

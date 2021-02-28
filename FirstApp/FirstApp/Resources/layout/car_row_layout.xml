@@ -28,5 +28,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/carImageView"
-        android:contentDescription="car manufacture logo" />
+        android:contentDescription="car manufacturer logo" />
 </LinearLayout>
