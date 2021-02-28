@@ -56,7 +56,7 @@ namespace FirstApp
                 string exportImage = Convert.ToString(manufacturerLogo);
                 
                 Intent intent = new Intent(this, typeof(CarSpecActivity));
-                intent.PutExtra("carImage", exportImage);
+                intent.PutExtra("manufacturerLogoImage", exportImage);
                 StartActivity(intent);
             };
         }

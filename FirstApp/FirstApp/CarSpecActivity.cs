@@ -18,14 +18,11 @@ namespace FirstApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            
+     
             SetContentView(Resource.Layout.car_spec_layout);
-            // Create your application here
-            var textView = FindViewById<TextView>(Resource.Id.textView1);
             
-            int imageNr = Convert.ToInt32(Intent.GetStringExtra("carImage"));
-            FindViewById<ImageView>(Resource.Id.carImageView).SetImageResource(imageNr);
+            int manufacturerLogo = Convert.ToInt32(Intent.GetStringExtra("manufacturerLogoImage"));
+            FindViewById<ImageView>(Resource.Id.carImageView).SetImageResource(manufacturerLogo);
         }
     }
 }
