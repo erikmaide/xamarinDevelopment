@@ -27,7 +27,7 @@ namespace FirstApp
             {
                 new Car { Manufacturer = "Ford", Model = "Focus", KW = 100, Image = Resource.Drawable.ford },
                 new Car { Manufacturer = "Volkswagen", Model = "Passat", KW = 45, Image = Resource.Drawable.volkswagen },
-                new Car { Manufacturer = "Ford2", Model = "Focus2", KW = 45 },
+                new Car { Manufacturer = "BMW", Model = "530d", KW = 195, Image = Resource.Drawable.BMW  },
                 new Car { Manufacturer = "Ford3", Model = "Focus3", KW = 67 },
                 new Car { Manufacturer = "Ford4", Model = "Focus4", KW = 6, Image = Resource.Drawable.ford },
                 new Car { Manufacturer = "Ford5", Model = "Focus5", KW = 1050 },
@@ -49,16 +49,15 @@ namespace FirstApp
 
             listView.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args)
             {
-                int manufacturerLogo = items[args.Position].Image;
-                string exportImage = Convert.ToString(manufacturerLogo);
                 var car = items[args.Position].Manufacturer;
                 Toast.MakeText(this, car, ToastLength.Long).Show();
-                Intent intent = new Intent(this, typeof(CarSpecActivity));
+
+                int manufacturerLogo = items[args.Position].Image;
+                string exportImage = Convert.ToString(manufacturerLogo);
                 
+                Intent intent = new Intent(this, typeof(CarSpecActivity));
                 intent.PutExtra("carImage", exportImage);
                 StartActivity(intent);
-
-
             };
         }
     }
