@@ -19,6 +19,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
+         <EditText
+            android:id="@+id/txt_firstname"
+            android:hint="@string/first_name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+                 <EditText
+            android:id="@+id/txt_lastname"
+            android:hint="@string/last_name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
         <EditText
             android:id="@+id/txt_password"
             android:hint="@string/password"
@@ -28,15 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
-        
-        <Button
-            android:id="@+id/btn_get_data"
-            android:text="@string/login"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
                 <Button
-            android:id="@+id/btn_go_register"
+            android:id="@+id/btn_register"
             android:text="@string/register"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"

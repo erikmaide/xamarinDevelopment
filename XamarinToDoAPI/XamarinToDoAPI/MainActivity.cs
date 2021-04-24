@@ -20,16 +20,8 @@ namespace XamarinToDoAPI
         public static string access_token;
         public static string user;
         public static string password;
-        Button login;
+        Button login, register;
         EditText txt_user, txt_password;
-       private void Accelerometer_ShakeDetected(object sender, EventArgs e)
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                txt_user.Text = string.Empty;
-                txt_password.Text = string.Empty;
-            });
-        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,10 +29,16 @@ namespace XamarinToDoAPI
             SetContentView(Resource.Layout.activity_main);
             myAPI = RestService.For<IMyAPI>(Constants.ApiUrl);
             login = FindViewById<Button>(Resource.Id.btn_get_data);
+            register = FindViewById<Button>(Resource.Id.btn_go_register);
             txt_user = FindViewById<EditText>(Resource.Id.txt_user);
             txt_password = FindViewById<EditText>(Resource.Id.txt_password);
-            Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
-            Accelerometer.Start(SensorSpeed.Game);
+
+            register.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(RegisterUserActivity));
+                StartActivity(intent);
+            };
+
 
             login.Click += async delegate
              {

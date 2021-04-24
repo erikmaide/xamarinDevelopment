@@ -23,5 +23,6 @@ namespace XamarinToDoAPI.Model
         public string title { get; set; }
         public string desc { get; set; }
         public bool marked_as_done { get; set; }
+        public string newPassword { get; set; }
     }
 }

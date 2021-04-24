@@ -20,6 +20,9 @@ namespace XamarinToDoAPI.Interface
         [Post("/users/get-token")]
         Task<PostContent> Login([Body] PostContent post);
 
+        [Post("/users")]
+        Task<PostContent> RegisterUser([Body] PostContent register);
+
         [Get("/tasks")]
         Task<List<PostContent>> GetTasks([Header("Authorization")] string authorization);
 
